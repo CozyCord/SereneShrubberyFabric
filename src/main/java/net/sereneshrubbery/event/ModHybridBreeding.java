@@ -212,10 +212,10 @@ public class ModHybridBreeding {
 
     private static void grantAdvancement(ServerPlayerEntity player, ServerWorld serverWorld, String advancementName) {
         //? if >=1.21 {
-        /*Identifier id = Identifier.of(SereneShrubbery.MOD_ID, advancementName);
-        *///?} else {
-        Identifier id = new Identifier(SereneShrubbery.MOD_ID, advancementName);
-        //?}
+        Identifier id = Identifier.of(SereneShrubbery.MOD_ID, advancementName);
+        //?} else {
+        /*Identifier id = new Identifier(SereneShrubbery.MOD_ID, advancementName);
+        *///?}
 
         var server = serverWorld.getServer();
         var advancementEntry = server.getAdvancementLoader().get(id);

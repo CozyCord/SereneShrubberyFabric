@@ -14,10 +14,10 @@ import net.minecraft.client.texture.Sprite;
 import net.minecraft.client.particle.SpriteProvider;
 import net.minecraft.client.world.ClientWorld;
 //? if >=1.21 {
-/*import net.minecraft.particle.SimpleParticleType;
-*///?} else {
-import net.minecraft.particle.DefaultParticleType;
-//?}
+import net.minecraft.particle.SimpleParticleType;
+//?} else {
+/*import net.minecraft.particle.DefaultParticleType;
+*///?}
 //? if >=1.21.9 {
 /*import net.minecraft.util.math.random.Random;
 *///?}
@@ -115,7 +115,7 @@ public class ButterflyBushParticle extends SpriteBillboardParticle {
 
     @Environment(EnvType.CLIENT)
     //? if >=1.21 {
-    /*public static class Factory implements ParticleFactory<SimpleParticleType> {
+    public static class Factory implements ParticleFactory<SimpleParticleType> {
         private final SpriteProvider spriteProvider;
 
         public Factory(SpriteProvider spriteProvider) {
@@ -129,8 +129,8 @@ public class ButterflyBushParticle extends SpriteBillboardParticle {
             return new ButterflyBushParticle(world, x, y, z, velocityX, velocityY, velocityZ, this.spriteProvider);
         }
     }
-    *///?} else {
-    public static class Factory implements ParticleFactory<DefaultParticleType> {
+    //?} else {
+    /*public static class Factory implements ParticleFactory<DefaultParticleType> {
         private final SpriteProvider spriteProvider;
 
         public Factory(SpriteProvider spriteProvider) {
@@ -144,7 +144,7 @@ public class ButterflyBushParticle extends SpriteBillboardParticle {
             return new ButterflyBushParticle(world, x, y, z, velocityX, velocityY, velocityZ, this.spriteProvider);
         }
     }
-    //?}
+    *///?}
 }
 //?} else {
 /*public class ButterflyBushParticle extends BillboardParticle {

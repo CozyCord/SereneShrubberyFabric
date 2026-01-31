@@ -1,8 +1,8 @@
 package net.sereneshrubbery.block;
 
 //? if >=1.21 {
-/*import net.minecraft.block.AbstractBlock;
-*///?}
+import net.minecraft.block.AbstractBlock;
+//?}
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -70,26 +70,26 @@ public class BloomBasketBlock extends Block {
     }
 
     //? if >=1.21 {
-    /*public BloomBasketBlock(Settings settings) {
+    public BloomBasketBlock(Settings settings) {
         super(settings
             .sounds(BlockSoundGroup.WOOD)
             .nonOpaque()
             .strength(0.5f)
             //? if >=1.21.2 {
-            /^.dropsNothing()
-            ^///?}
+            /*.dropsNothing()
+            *///?}
         );
         setDefaultState(getStateManager().getDefaultState().with(FACING, Direction.NORTH));
     }
-    *///?} else {
-    public BloomBasketBlock() {
+    //?} else {
+    /*public BloomBasketBlock() {
         super(Settings.copy(Blocks.FLOWER_POT)
             .sounds(BlockSoundGroup.WOOD)
             .nonOpaque()
             .strength(0.5f));
         setDefaultState(getStateManager().getDefaultState().with(FACING, Direction.NORTH));
     }
-    //?}
+    *///?}
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -102,25 +102,21 @@ public class BloomBasketBlock extends Block {
     }
 
     @Override
-    //? if >=1.21.2 {
-    /*protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-    *///?} else {
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-    //?}
         return SHAPE;
     }
 
-    //? if <1.21.2 {
-    @Override
+    //? if <1.21 {
+    /*@Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         return handleInteraction(state, world, pos, player, hand);
     }
-    //?} else {
-    /*@Override
+    *///?} else {
+    @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         return handleInteraction(state, world, pos, player, player.getActiveHand());
     }
-    *///?}
+    //?}
 
     private ActionResult handleInteraction(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand) {
         Block currentBlock = state.getBlock();

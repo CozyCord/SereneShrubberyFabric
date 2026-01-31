@@ -5,8 +5,8 @@ package net.sereneshrubbery;
 import net.minecraft.registry.RegistryKeys;
 *///?}
 //? if >=1.21 {
-/*import net.minecraft.block.AbstractBlock;
-*///?}
+import net.minecraft.block.AbstractBlock;
+//?}
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registries;
@@ -101,14 +101,14 @@ public class ModBlocks {
         ALL_BLOCKS.add(block);
         return Registry.register(Registries.BLOCK, key, block);
         *///?} elif >=1.21 {
-        /*Block block = new ModFlowerBlock(AbstractBlock.Settings.copy(Blocks.POPPY));
+        Block block = new ModFlowerBlock(AbstractBlock.Settings.copy(Blocks.POPPY));
         ALL_BLOCKS.add(block);
         return Registry.register(Registries.BLOCK, SereneId.of(name), block);
-        *///?} else {
-        Block block = new ModFlowerBlock();
+        //?} else {
+        /*Block block = new ModFlowerBlock();
         ALL_BLOCKS.add(block);
         return Registry.register(Registries.BLOCK, SereneId.of(name), block);
-        //?}
+        *///?}
     }
 
     private static Block registerBloomBasket(String name) {
@@ -119,14 +119,14 @@ public class ModBlocks {
         ALL_BLOCKS.add(block);
         return Registry.register(Registries.BLOCK, key, block);
         *///?} elif >=1.21 {
-        /*Block block = new BloomBasketBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS));
+        Block block = new BloomBasketBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS));
         ALL_BLOCKS.add(block);
         return Registry.register(Registries.BLOCK, SereneId.of(name), block);
-        *///?} else {
-        Block block = new BloomBasketBlock();
+        //?} else {
+        /*Block block = new BloomBasketBlock();
         ALL_BLOCKS.add(block);
         return Registry.register(Registries.BLOCK, SereneId.of(name), block);
-        //?}
+        *///?}
     }
 
     private static Block registerCactus(String name) {
@@ -137,14 +137,14 @@ public class ModBlocks {
         ALL_BLOCKS.add(block);
         return Registry.register(Registries.BLOCK, key, block);
         *///?} elif >=1.21 {
-        /*Block block = new CrownCactusBlock(AbstractBlock.Settings.copy(Blocks.CACTUS));
+        Block block = new CrownCactusBlock(AbstractBlock.Settings.copy(Blocks.CACTUS));
         ALL_BLOCKS.add(block);
         return Registry.register(Registries.BLOCK, SereneId.of(name), block);
-        *///?} else {
-        Block block = new CrownCactusBlock();
+        //?} else {
+        /*Block block = new CrownCactusBlock();
         ALL_BLOCKS.add(block);
         return Registry.register(Registries.BLOCK, SereneId.of(name), block);
-        //?}
+        *///?}
     }
 
     private static Block registerButterflyBush(String name) {
@@ -155,14 +155,14 @@ public class ModBlocks {
         ALL_BLOCKS.add(block);
         return Registry.register(Registries.BLOCK, key, block);
         *///?} elif >=1.21 {
-        /*Block block = new ButterflyBushBlock(AbstractBlock.Settings.copy(Blocks.POPPY));
+        Block block = new ButterflyBushBlock(AbstractBlock.Settings.copy(Blocks.POPPY));
         ALL_BLOCKS.add(block);
         return Registry.register(Registries.BLOCK, SereneId.of(name), block);
-        *///?} else {
-        Block block = new ButterflyBushBlock();
+        //?} else {
+        /*Block block = new ButterflyBushBlock();
         ALL_BLOCKS.add(block);
         return Registry.register(Registries.BLOCK, SereneId.of(name), block);
-        //?}
+        *///?}
     }
 
     public static List<Block> getAllBlocks() {
