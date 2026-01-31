@@ -1,0 +1,10 @@
+/give developer serene_shrubbery:white_pansies
+/give developer serene_shrubbery:bloom_basket_orange_pansies
+/give developer serene_shrubbery:halloween_pansies
+/time set 8d
+/time set night
+/time set 205000
+/time set 208000
+/time set 210000
+/time set night
+/time set 18000

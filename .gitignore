@@ -1,0 +1,22 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Stonecutter generated
+**/build/
+
+# Run directory
+run/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local properties
+local.properties

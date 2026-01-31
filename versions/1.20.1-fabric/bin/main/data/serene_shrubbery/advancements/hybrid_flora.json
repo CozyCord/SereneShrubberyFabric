@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "serene_shrubbery:sunset_foxglove"
+    },
+    "title": {
+      "translate": "advancements.hybrid_flora.title"
+    },
+    "description": {
+      "translate": "advancements.hybrid_flora.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "hybrid_flora_0": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 5
+  },
+  "parent": "serene_shrubbery:gardeners_path"
+}

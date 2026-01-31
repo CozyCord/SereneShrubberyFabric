@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "serene_shrubbery:blocks/sunrise_pansies",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "serene_shrubbery:sunrise_pansies"
+        }
+      ]
+    }
+  ]
+}

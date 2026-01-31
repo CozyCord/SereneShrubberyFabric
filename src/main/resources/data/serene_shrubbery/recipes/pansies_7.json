@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "serene_shrubbery:halloween_pansies"
+    }
+  ],
+  "result": {
+    "item": "minecraft:black_dye",
+    "count": 1
+  }
+}

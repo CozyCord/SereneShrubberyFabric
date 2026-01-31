@@ -1,0 +1,9 @@
+{
+  "parent": "serene_shrubbery:custom/fireweed",
+  "textures": {
+    "all": "serene_shrubbery:block/fireweed",
+    "particle": "serene_shrubbery:block/fireweed",
+    "0": "serene_shrubbery:block/fireweed"
+  },
+  "render_type": "cutout"
+}

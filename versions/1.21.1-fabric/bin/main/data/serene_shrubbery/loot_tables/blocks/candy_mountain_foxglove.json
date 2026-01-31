@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "serene_shrubbery:blocks/candy_mountain_foxglove",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "serene_shrubbery:candy_mountain_foxglove"
+        }
+      ]
+    }
+  ]
+}

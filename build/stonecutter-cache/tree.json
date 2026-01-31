@@ -1,0 +1,35 @@
+{
+  "stonecutter": "0.8.3",
+  "vcs": "1.21.1-fabric",
+  "current": "1.20.1-fabric",
+  "branches": [
+    {
+      "id": "",
+      "path": "E:/Modding/SereneShrubberyFabric"
+    }
+  ],
+  "nodes": [
+    {
+      "project": "1.20.1-fabric",
+      "version": "1.20.1",
+      "active": true,
+      "path": "E:/Modding/SereneShrubberyFabric/versions/1.20.1-fabric"
+    },
+    {
+      "project": "1.21.1-fabric",
+      "version": "1.21.1",
+      "path": "E:/Modding/SereneShrubberyFabric/versions/1.21.1-fabric"
+    },
+    {
+      "project": "1.21.4-fabric",
+      "version": "1.21.4",
+      "path": "E:/Modding/SereneShrubberyFabric/versions/1.21.4-fabric"
+    },
+    {
+      "project": "1.21.11-fabric",
+      "version": "1.21.11",
+      "path": "E:/Modding/SereneShrubberyFabric/versions/1.21.11-fabric"
+    }
+  ],
+  "flags": {}
+}

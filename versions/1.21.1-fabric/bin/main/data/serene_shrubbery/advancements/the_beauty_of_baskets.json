@@ -1,0 +1,39 @@
+{
+  "display": {
+    "icon": {
+      "item": "serene_shrubbery:bloom_basket"
+    },
+    "title": {
+      "translate": "advancements.the_beauty_of_baskets.title"
+    },
+    "description": {
+      "translate": "advancements.the_beauty_of_baskets.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "the_beauty_of_baskets_0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "serene_shrubbery:bloom_basket"
+            ],
+            "count": {
+              "min": 1,
+              "max": 1
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 5
+  },
+  "parent": "serene_shrubbery:gardeners_path"
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "serene_shrubbery:custom/bloombasket",
+  "textures": {
+    "all": "serene_shrubbery:block/bloombasket",
+    "particle": "serene_shrubbery:block/bloombasket",
+    "0": "serene_shrubbery:block/bloombasket"
+  },
+  "render_type": "solid"
+}

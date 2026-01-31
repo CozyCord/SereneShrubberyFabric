@@ -1,0 +1,9 @@
+{
+  "parent": "serene_shrubbery:custom/blanketflower",
+  "textures": {
+    "all": "serene_shrubbery:block/liverwortlightpink",
+    "particle": "serene_shrubbery:block/liverwortlightpink",
+    "0": "serene_shrubbery:block/liverwortlightpink"
+  },
+  "render_type": "cutout"
+}

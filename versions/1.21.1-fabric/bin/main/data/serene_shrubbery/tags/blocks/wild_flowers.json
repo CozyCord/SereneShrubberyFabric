@@ -1,0 +1,31 @@
+{
+  "replace": false,
+  "values": [
+    "serene_shrubbery:peach_foxglove",
+    "serene_shrubbery:red_pansies",
+    "serene_shrubbery:yellow_pansies",
+    "serene_shrubbery:white_pansies",
+    "serene_shrubbery:purple_pansies",
+    "serene_shrubbery:hydrangea",
+    "serene_shrubbery:purple_hydrangea",
+    "serene_shrubbery:red_hydrangea",
+    "serene_shrubbery:white_hydrangea",
+    "serene_shrubbery:twinflower",
+    "serene_shrubbery:blue_liverwort",
+    "serene_shrubbery:purple_liverwort",
+    "serene_shrubbery:white_liverwort",
+    "serene_shrubbery:fireweed",
+    "serene_shrubbery:orange_crown_cactus",
+    "serene_shrubbery:pink_crown_cactus",
+    "serene_shrubbery:purple_lupine",
+    "serene_shrubbery:lupine_pink",
+    "serene_shrubbery:lupine_white",
+    "serene_shrubbery:purple_foxglove",
+    "serene_shrubbery:white_foxglove",
+    "serene_shrubbery:butterfly_bush",
+    "serene_shrubbery:blanketflower_1_flower",
+    "serene_shrubbery:blanketflower_double",
+    "serene_shrubbery:blanketflower_triple",
+    "serene_shrubbery:blanketflower_quad"
+  ]
+}

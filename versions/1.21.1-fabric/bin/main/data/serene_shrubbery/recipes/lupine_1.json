@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "serene_shrubbery:purple_lupine"
+    }
+  ],
+  "result": {
+    "item": "minecraft:purple_dye",
+    "count": 2
+  }
+}

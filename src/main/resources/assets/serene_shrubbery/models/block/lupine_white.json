@@ -1,0 +1,9 @@
+{
+  "parent": "serene_shrubbery:custom/lupineredone",
+  "textures": {
+    "all": "serene_shrubbery:block/lupineredonewhite2",
+    "particle": "serene_shrubbery:block/lupineredonewhite2",
+    "1": "serene_shrubbery:block/lupineredonewhite2"
+  },
+  "render_type": "cutout"
+}

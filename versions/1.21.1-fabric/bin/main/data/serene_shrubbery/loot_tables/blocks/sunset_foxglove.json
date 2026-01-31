@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "serene_shrubbery:blocks/sunset_foxglove",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "serene_shrubbery:sunset_foxglove"
+        }
+      ]
+    }
+  ]
+}

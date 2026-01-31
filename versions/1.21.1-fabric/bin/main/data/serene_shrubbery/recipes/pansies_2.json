@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "serene_shrubbery:yellow_pansies"
+    }
+  ],
+  "result": {
+    "item": "minecraft:yellow_dye",
+    "count": 1
+  }
+}

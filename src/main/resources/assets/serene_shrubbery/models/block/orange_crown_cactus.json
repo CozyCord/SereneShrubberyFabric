@@ -1,0 +1,9 @@
+{
+  "parent": "serene_shrubbery:custom/crowncactusredone",
+  "textures": {
+    "all": "serene_shrubbery:block/orangecrowncacti",
+    "particle": "serene_shrubbery:block/orangecrowncacti",
+    "1": "serene_shrubbery:block/orangecrowncacti"
+  },
+  "render_type": "cutout"
+}

@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "serene_shrubbery:blocks/bloom_basket_purple_pansies",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "serene_shrubbery:bloom_basket"
+        }
+      ]
+    },
+    {
+      "bonus_rolls": 0.0,
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "serene_shrubbery:purple_pansies"
+        }
+      ]
+    }
+  ]
+}

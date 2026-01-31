@@ -1,0 +1,9 @@
+{
+  "parent": "serene_shrubbery:custom/blanketflowerredone1",
+  "textures": {
+    "all": "serene_shrubbery:block/blanketflowerredone",
+    "particle": "serene_shrubbery:block/blanketflowerredone",
+    "0": "serene_shrubbery:block/blanketflowerredone"
+  },
+  "render_type": "cutout"
+}
