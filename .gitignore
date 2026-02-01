@@ -20,3 +20,20 @@ Thumbs.db
 
 # Local properties
 local.properties
+
+#versions
+versions/1.20.1-fabric/.gradle/
+versions/1.20.1-fabric/bin/
+versions/1.20.1-fabric/build/
+
+versions/1.21.1-fabric/.gradle/
+versions/1.21.1-fabric/bin/
+versions/1.21.1-fabric/build/
+
+versions/1.21.4-fabric/.gradle/
+versions/1.21.4-fabric/bin/
+versions/1.21.4-fabric/build/
+
+versions/1.21.11-fabric/.gradle/
+versions/1.21.11-fabric/bin/
+versions/1.21.11-fabric/build/

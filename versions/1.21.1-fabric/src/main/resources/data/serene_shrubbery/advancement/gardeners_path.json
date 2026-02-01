@@ -1,0 +1,30 @@
+{
+  "display": {
+    "background": "minecraft:textures/block/stone.png",
+    "icon": {
+      "id": "serene_shrubbery:butterfly_bush"
+    },
+    "title": {
+      "translate": "advancements.gardeners_path.title"
+    },
+    "description": {
+      "translate": "advancements.gardeners_path.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "gardeners_path_0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "serene_shrubbery:every_flower"
+          }
+        ]
+      }
+    }
+  }
+}

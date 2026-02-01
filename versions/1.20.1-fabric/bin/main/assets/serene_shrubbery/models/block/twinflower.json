@@ -1,8 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "serene_shrubbery:block/twinflower",
-    "particle": "serene_shrubbery:block/twinflower"
-  },
-  "render_type": "cutout"
-}

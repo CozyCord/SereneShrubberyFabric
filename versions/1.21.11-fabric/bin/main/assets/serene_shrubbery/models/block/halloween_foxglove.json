@@ -1,9 +1,0 @@
-{
-  "parent": "serene_shrubbery:custom/foxgloveredone",
-  "textures": {
-    "all": "serene_shrubbery:block/foxgloveredonehallow",
-    "particle": "serene_shrubbery:block/foxgloveredonehallow",
-    "0": "serene_shrubbery:block/foxgloveredonehallow"
-  },
-  "render_type": "cutout"
-}

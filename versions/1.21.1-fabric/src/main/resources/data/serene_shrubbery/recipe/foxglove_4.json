@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "serene_shrubbery:sunset_foxglove"
+    }
+  ],
+  "result": {
+    "id": "minecraft:orange_dye",
+    "count": 2
+  }
+}

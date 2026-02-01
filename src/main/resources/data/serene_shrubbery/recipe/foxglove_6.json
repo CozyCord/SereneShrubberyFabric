@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "serene_shrubbery:candy_mountain_foxglove"
+  ],
+  "result": {
+    "id": "minecraft:magenta_dye",
+    "count": 2
+  }
+}

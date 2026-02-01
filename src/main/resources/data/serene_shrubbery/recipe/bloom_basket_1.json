@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "bcb",
+    " b "
+  ],
+  "key": {
+    "a": "minecraft:stick",
+    "b": "#minecraft:planks",
+    "c": "#minecraft:dirt"
+  },
+  "result": {
+    "id": "serene_shrubbery:bloom_basket",
+    "count": 1
+  }
+}

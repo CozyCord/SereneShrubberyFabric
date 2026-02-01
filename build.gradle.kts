@@ -25,6 +25,15 @@ dependencies {
     }
 }
 
+// Add version-specific resources (e.g., for recipe format changes between versions)
+sourceSets {
+    main {
+        resources {
+            srcDir("src/main/resources")
+        }
+    }
+}
+
 // Custom models are too large for Groovy's template expansion (65535 char limit)
 // We exclude them from template processing and copy them directly after
 tasks.withType<ProcessResources>().configureEach {
@@ -40,6 +49,16 @@ tasks.withType<ProcessResources>().configureEach {
             targetDir.mkdirs()
             sourceDir.listFiles()?.forEach { file ->
                 file.copyTo(targetDir.resolve(file.name), overwrite = true)
+            }
+        }
+
+        // Copy version-specific resources (overwriting main resources)
+        val versionResourceDir = project.file("src/main/resources")
+        if (versionResourceDir.exists() && versionResourceDir.isDirectory) {
+            copy {
+                from(versionResourceDir)
+                into(destinationDir)
+                duplicatesStrategy = DuplicatesStrategy.INCLUDE
             }
         }
     }

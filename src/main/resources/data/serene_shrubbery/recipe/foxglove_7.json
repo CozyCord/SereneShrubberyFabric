@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "serene_shrubbery:lavender_foxglove"
+  ],
+  "result": {
+    "id": "minecraft:purple_dye",
+    "count": 2
+  }
+}

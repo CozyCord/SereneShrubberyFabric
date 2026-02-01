@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "serene_shrubbery:sky_blue_lupine"
+    }
+  ],
+  "result": {
+    "id": "minecraft:light_blue_dye",
+    "count": 2
+  }
+}

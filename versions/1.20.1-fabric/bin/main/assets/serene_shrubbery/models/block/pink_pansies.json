@@ -1,9 +1,0 @@
-{
-  "parent": "serene_shrubbery:custom/pansies",
-  "textures": {
-    "all": "serene_shrubbery:block/pinkpansies2",
-    "particle": "serene_shrubbery:block/pinkpansies2",
-    "0": "serene_shrubbery:block/pinkpansies2"
-  },
-  "render_type": "cutout"
-}
