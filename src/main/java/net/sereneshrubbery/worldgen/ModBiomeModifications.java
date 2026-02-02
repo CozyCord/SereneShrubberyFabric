@@ -12,10 +12,7 @@ import net.sereneshrubbery.SereneShrubbery;
 
 public class ModBiomeModifications {
     // Placed feature keys
-    private static final RegistryKey<PlacedFeature> BLANKETFLOWER_1_FLOWER = registerPlacedFeature("blanketflower_1_flower");
-    private static final RegistryKey<PlacedFeature> BLANKETFLOWER_DOUBLE = registerPlacedFeature("blanketflower_double");
-    private static final RegistryKey<PlacedFeature> BLANKETFLOWER_TRIPLE = registerPlacedFeature("blanketflower_triple");
-    private static final RegistryKey<PlacedFeature> BLANKETFLOWER_QUAD = registerPlacedFeature("blanketflower_quad");
+    private static final RegistryKey<PlacedFeature> BLANKETFLOWER = registerPlacedFeature("blanketflower");
     private static final RegistryKey<PlacedFeature> BLUE_LIVERWORT = registerPlacedFeature("blue_liverwort");
     private static final RegistryKey<PlacedFeature> BUTTERFLY_BUSH = registerPlacedFeature("butterfly_bush");
     private static final RegistryKey<PlacedFeature> FIREWEED = registerPlacedFeature("fireweed");
@@ -44,26 +41,11 @@ public class ModBiomeModifications {
     }
 
     public static void register() {
-        // Blanketflowers - beach, savanna biomes
+        // Blanketflower - beach, savanna biomes
         BiomeModifications.addFeature(
             BiomeSelectors.includeByKey(BiomeKeys.BEACH, BiomeKeys.SAVANNA, BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.WINDSWEPT_SAVANNA),
             GenerationStep.Feature.VEGETAL_DECORATION,
-            BLANKETFLOWER_1_FLOWER
-        );
-        BiomeModifications.addFeature(
-            BiomeSelectors.includeByKey(BiomeKeys.BEACH, BiomeKeys.SAVANNA, BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.WINDSWEPT_SAVANNA),
-            GenerationStep.Feature.VEGETAL_DECORATION,
-            BLANKETFLOWER_DOUBLE
-        );
-        BiomeModifications.addFeature(
-            BiomeSelectors.includeByKey(BiomeKeys.BEACH, BiomeKeys.SAVANNA, BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.WINDSWEPT_SAVANNA),
-            GenerationStep.Feature.VEGETAL_DECORATION,
-            BLANKETFLOWER_TRIPLE
-        );
-        BiomeModifications.addFeature(
-            BiomeSelectors.includeByKey(BiomeKeys.BEACH, BiomeKeys.SAVANNA, BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.WINDSWEPT_SAVANNA),
-            GenerationStep.Feature.VEGETAL_DECORATION,
-            BLANKETFLOWER_QUAD
+            BLANKETFLOWER
         );
 
         // Blue liverwort - forest biomes
@@ -220,6 +202,6 @@ public class ModBiomeModifications {
             YELLOW_PANSIES
         );
 
-        SereneShrubbery.LOGGER.info("Registered biome modifications for 26 features");
+        SereneShrubbery.LOGGER.info("Registered biome modifications for 23 features");
     }
 }

@@ -1,9 +1,9 @@
 {
-  "feature": "serene_shrubbery:blanketflower_1_flower",
+  "feature": "serene_shrubbery:blanketflower",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 2
+      "count": 8
     },
     {
       "type": "minecraft:rarity_filter",

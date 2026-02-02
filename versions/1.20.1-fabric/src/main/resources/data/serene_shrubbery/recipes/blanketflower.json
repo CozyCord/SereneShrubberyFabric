@@ -2,10 +2,12 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "serene_shrubbery:blanketflower_1_flower"
+    {
+      "item": "serene_shrubbery:blanketflower"
+    }
   ],
   "result": {
-    "id": "minecraft:orange_dye",
+    "item": "minecraft:orange_dye",
     "count": 1
   }
 }

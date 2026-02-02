@@ -7,13 +7,10 @@ import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
  * Flowers can be composted in composter blocks to produce bone meal.
  */
 public class ModComposting {
-    // Standard flower composting chance (same as vanilla flowers like dandelion, poppy)
     private static final float FLOWER_COMPOST_CHANCE = 0.65f;
-    // Tall flower composting chance (same as vanilla tall flowers)
     private static final float TALL_FLOWER_COMPOST_CHANCE = 0.65f;
 
     public static void register() {
-        // Register all flowers for composting
         CompostingChanceRegistry registry = CompostingChanceRegistry.INSTANCE;
 
         // Pansies
@@ -36,7 +33,7 @@ public class ModComposting {
         registry.add(ModBlocks.WHITE_HYDRANGEA, FLOWER_COMPOST_CHANCE);
         registry.add(ModBlocks.HALLOWEEN_HYDRANGEA, FLOWER_COMPOST_CHANCE);
 
-        // Foxgloves (tall flowers)
+        // Foxgloves
         registry.add(ModBlocks.WHITE_FOXGLOVE, TALL_FLOWER_COMPOST_CHANCE);
         registry.add(ModBlocks.PURPLE_FOXGLOVE, TALL_FLOWER_COMPOST_CHANCE);
         registry.add(ModBlocks.PEACH_FOXGLOVE, TALL_FLOWER_COMPOST_CHANCE);
@@ -58,11 +55,8 @@ public class ModComposting {
         registry.add(ModBlocks.PURPLE_LIVERWORT, FLOWER_COMPOST_CHANCE);
         registry.add(ModBlocks.WHITE_LIVERWORT, FLOWER_COMPOST_CHANCE);
 
-        // Blanketflowers
-        registry.add(ModBlocks.BLANKETFLOWER_1_FLOWER, FLOWER_COMPOST_CHANCE);
-        registry.add(ModBlocks.BLANKETFLOWER_DOUBLE, FLOWER_COMPOST_CHANCE);
-        registry.add(ModBlocks.BLANKETFLOWER_TRIPLE, FLOWER_COMPOST_CHANCE);
-        registry.add(ModBlocks.BLANKETFLOWER_QUAD, FLOWER_COMPOST_CHANCE);
+        // Blanketflower
+        registry.add(ModBlocks.BLANKETFLOWER, FLOWER_COMPOST_CHANCE);
 
         // Others
         registry.add(ModBlocks.FIREWEED, TALL_FLOWER_COMPOST_CHANCE);

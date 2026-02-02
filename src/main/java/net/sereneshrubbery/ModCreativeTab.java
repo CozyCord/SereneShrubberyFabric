@@ -17,12 +17,28 @@ public class ModCreativeTab {
                 .icon(() -> new ItemStack(ModBlocks.BUTTERFLY_BUSH.asItem()))
                 .entries((displayContext, entries) -> {
                     for (Block block : ModBlocks.getAllBlocks()) {
+                        if (isFilledBloomBasket(block)) {
+                            continue;
+                        }
                         addBlockItem(entries, block);
                     }
                 })
                 .build()
         );
         SereneShrubbery.LOGGER.info("Registered creative tab");
+    }
+
+    private static boolean isFilledBloomBasket(Block block) {
+        return block == ModBlocks.BLOOM_BASKET_RED_PANSIES ||
+               block == ModBlocks.BLOOM_BASKET_WHITE_PANSIES ||
+               block == ModBlocks.BLOOM_BASKET_YELLOW_PANSIES ||
+               block == ModBlocks.BLOOM_BASKET_ORANGE_PANSIES ||
+               block == ModBlocks.BLOOM_BASKET_PINK_PANSIES ||
+               block == ModBlocks.BLOOM_BASKET_PURPLE_PANSIES ||
+               block == ModBlocks.BLOOM_BASKET_FROST_PANSIES ||
+               block == ModBlocks.BLOOM_BASKET_SUNRISE_PANSIES ||
+               block == ModBlocks.BLOOM_BASKET_HALLOWEEN_PANSIES ||
+               block == ModBlocks.BLOOM_BASKET_PANOLA_PANSIES;
     }
 
     private static void addBlockItem(ItemGroup.Entries entries, Block block) {

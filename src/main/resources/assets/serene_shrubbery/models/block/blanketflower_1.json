@@ -1,5 +1,5 @@
 {
-  "parent": "serene_shrubbery:custom/blanketflowerredone2",
+  "parent": "serene_shrubbery:custom/blanketflowerredone1",
   "textures": {
     "all": "serene_shrubbery:block/blanketflowerredone",
     "particle": "serene_shrubbery:block/blanketflowerredone",

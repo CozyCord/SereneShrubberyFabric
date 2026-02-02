@@ -1,23 +1,20 @@
 package net.sereneshrubbery.event;
 
-import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.advancement.AdvancementProgress;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.sereneshrubbery.ModBlocks;
 import net.sereneshrubbery.SereneShrubbery;
+import net.sereneshrubbery.data.BreedingTimerState;
 
 import java.util.*;
 
@@ -25,58 +22,17 @@ public class ModHybridBreeding {
 
     private static final Map<Set<Block>, Block> HYBRID_RECIPES = new HashMap<>();
     private static final Map<Set<Block>, Block> HALLOWEEN_RECIPES = new HashMap<>();
+    private static final Map<Set<Block>, Block> TRIPLE_HYBRID_RECIPES = new HashMap<>();
+    private static final Map<Block, Block> SAME_FLOWER_RECIPES = new HashMap<>();
+
+    // Timing constants (in milliseconds)
+    private static final long MIN_BREEDING_TIME_MS = 60_000;
+    private static final long MAX_BREEDING_TIME_MS = 600_000;
 
     public static void register() {
         initHybridRecipes();
-
-        UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
-            ItemStack stack = player.getStackInHand(hand);
-
-            if (!stack.isOf(Items.BONE_MEAL)) {
-                return ActionResult.PASS;
-            }
-
-            BlockPos pos = hitResult.getBlockPos();
-            BlockState state = world.getBlockState(pos);
-            Block block = state.getBlock();
-
-            if (!isHybridizableFlower(block)) {
-                return ActionResult.PASS;
-            }
-
-            //? if <1.21.4 {
-            if (!world.isClient) {
-            //?} else {
-            /*if (!world.isClient()) {
-            *///?}
-                Block hybrid = tryCreateHybrid(world, pos, block);
-                if (hybrid != null) {
-                    BlockPos hybridPos = findEmptyAdjacentSpace(world, pos);
-                    if (hybridPos != null) {
-                        world.setBlockState(hybridPos, hybrid.getDefaultState());
-
-                        if (!player.isCreative()) {
-                            stack.decrement(1);
-                        }
-
-                        if (world instanceof ServerWorld serverWorld) {
-                            serverWorld.spawnParticles(ParticleTypes.HAPPY_VILLAGER,
-                                hybridPos.getX() + 0.5, hybridPos.getY() + 0.5, hybridPos.getZ() + 0.5,
-                                15, 0.5, 0.5, 0.5, 0.0);
-
-                            if (player instanceof ServerPlayerEntity serverPlayer) {
-                                grantHybridAdvancement(serverPlayer, serverWorld);
-                            }
-                        }
-
-                        world.playSound(null, hybridPos, SoundEvents.ITEM_BONE_MEAL_USE, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                        return ActionResult.SUCCESS;
-                    }
-                }
-            }
-
-            return ActionResult.PASS;
-        });
+        int totalRecipes = HYBRID_RECIPES.size() + HALLOWEEN_RECIPES.size() + TRIPLE_HYBRID_RECIPES.size() + SAME_FLOWER_RECIPES.size();
+        SereneShrubbery.LOGGER.info("Registered {} hybrid breeding recipes", totalRecipes);
     }
 
     private static void initHybridRecipes() {
@@ -86,21 +42,21 @@ public class ModHybridBreeding {
         addHybridRecipe(ModBlocks.PEACH_FOXGLOVE, ModBlocks.PURPLE_FOXGLOVE, ModBlocks.CANDY_MOUNTAIN_FOXGLOVE);
 
         // Lupine hybrids
-        addHybridRecipe(ModBlocks.LUPINE_WHITE, ModBlocks.LUPINE_PINK, ModBlocks.GOLDEN_LUPINE);
+        addSameFlowerRecipe(ModBlocks.LUPINE_WHITE, ModBlocks.GOLDEN_LUPINE); // White + White = Golden
         addHybridRecipe(ModBlocks.LUPINE_WHITE, ModBlocks.PURPLE_LUPINE, ModBlocks.SKY_BLUE_LUPINE);
-        addHybridRecipe(ModBlocks.LUPINE_PINK, ModBlocks.PURPLE_LUPINE, ModBlocks.MANHATTAN_LIGHTS_LUPINE);
+        addTripleHybridRecipe(ModBlocks.GOLDEN_LUPINE, ModBlocks.PURPLE_LUPINE, ModBlocks.LUPINE_PINK, ModBlocks.MANHATTAN_LIGHTS_LUPINE); // Golden + Purple + Pink
 
         // Pansy hybrids
         addHybridRecipe(ModBlocks.RED_PANSIES, ModBlocks.YELLOW_PANSIES, ModBlocks.ORANGE_PANSIES);
         addHybridRecipe(ModBlocks.RED_PANSIES, ModBlocks.WHITE_PANSIES, ModBlocks.PINK_PANSIES);
         addHybridRecipe(ModBlocks.WHITE_PANSIES, ModBlocks.PURPLE_PANSIES, ModBlocks.BLUE_FROST_PANSIES);
-        addHybridRecipe(ModBlocks.ORANGE_PANSIES, ModBlocks.YELLOW_PANSIES, ModBlocks.SUNRISE_PANSIES);
-        addHybridRecipe(ModBlocks.PINK_PANSIES, ModBlocks.PURPLE_PANSIES, ModBlocks.PANOLA_PINK_PANSIES);
+        addTripleHybridRecipe(ModBlocks.ORANGE_PANSIES, ModBlocks.YELLOW_PANSIES, ModBlocks.PINK_PANSIES, ModBlocks.SUNRISE_PANSIES); // Orange + Yellow + Pink
+        addHybridRecipe(ModBlocks.PINK_PANSIES, ModBlocks.WHITE_PANSIES, ModBlocks.PANOLA_PINK_PANSIES); // Pink + White
 
         // Hydrangea hybrids
         addHybridRecipe(ModBlocks.RED_HYDRANGEA, ModBlocks.WHITE_HYDRANGEA, ModBlocks.PINK_HYDRANGEA);
 
-        // Halloween hybrids (require light level <= 4)
+        // Halloween hybrids
         addHalloweenRecipe(ModBlocks.PURPLE_PANSIES, ModBlocks.ORANGE_PANSIES, ModBlocks.HALLOWEEN_PANSIES);
         addHalloweenRecipe(ModBlocks.PURPLE_FOXGLOVE, ModBlocks.SUNSET_FOXGLOVE, ModBlocks.HALLOWEEN_FOXGLOVE);
         addHalloweenRecipe(ModBlocks.PURPLE_HYDRANGEA, ModBlocks.RED_HYDRANGEA, ModBlocks.HALLOWEEN_HYDRANGEA);
@@ -120,49 +76,178 @@ public class ModHybridBreeding {
         HALLOWEEN_RECIPES.put(parents, hybrid);
     }
 
-    private static boolean isHybridizableFlower(Block block) {
-        return ModBlocks.getAllBlocks().contains(block);
+    private static void addTripleHybridRecipe(Block parent1, Block parent2, Block parent3, Block hybrid) {
+        Set<Block> parents = new HashSet<>();
+        parents.add(parent1);
+        parents.add(parent2);
+        parents.add(parent3);
+        TRIPLE_HYBRID_RECIPES.put(parents, hybrid);
     }
 
-    private static Block tryCreateHybrid(World world, BlockPos pos, Block centerFlower) {
+    private static void addSameFlowerRecipe(Block parent, Block hybrid) {
+        SAME_FLOWER_RECIPES.put(parent, hybrid);
+    }
+
+    private static String getPosKey(BlockPos pos) {
+        return pos.getX() + "," + pos.getY() + "," + pos.getZ();
+    }
+
+    /**
+     * @param world The server world
+     * @param pos Position of the flower receiving the random tick
+     * @param centerFlower The block at pos
+     */
+    public static void tryBreedOnRandomTick(ServerWorld world, BlockPos pos, Block centerFlower) {
+        BreedingResult potentialResult = findBreedingPartner(world, pos, centerFlower);
+
+        BreedingTimerState timerState = BreedingTimerState.getServerState(world);
+        String key = getPosKey(pos);
+
+        if (potentialResult == null) {
+            timerState.removeTimer(key);
+            return;
+        }
+
+        long currentTime = System.currentTimeMillis();
+
+        if (!timerState.hasTimer(key)) {
+            timerState.setTimer(key, currentTime);
+            return;
+        }
+
+        Long startTime = timerState.getTimer(key);
+        if (startTime == null) {
+            timerState.setTimer(key, currentTime);
+            return;
+        }
+
+        long elapsedTime = currentTime - startTime;
+
+        if (elapsedTime < MIN_BREEDING_TIME_MS) {
+            return;
+        }
+
+        float timeProgress = Math.min(1.0f, (float)(elapsedTime - MIN_BREEDING_TIME_MS) / (MAX_BREEDING_TIME_MS - MIN_BREEDING_TIME_MS));
+        float breedingChance = timeProgress;
+
+        if (world.getRandom().nextFloat() > breedingChance) {
+            return;
+        }
+
+        BlockPos offspringPos = findEmptyAdjacentSpace(world, pos);
+        if (offspringPos == null) {
+            return;
+        }
+
+        timerState.removeTimer(key);
+
+        world.setBlockState(offspringPos, potentialResult.offspring.getDefaultState());
+
+        world.spawnParticles(ParticleTypes.HAPPY_VILLAGER,
+            offspringPos.getX() + 0.5, offspringPos.getY() + 0.5, offspringPos.getZ() + 0.5,
+            10, 0.3, 0.3, 0.3, 0.0);
+
+        world.playSound(null, offspringPos, SoundEvents.BLOCK_GRASS_PLACE, SoundCategory.BLOCKS, 1.0f, 1.2f);
+
+        grantAdvancementToNearbyPlayers(world, pos);
+    }
+
+    public static void onFlowerBroken(ServerWorld world, BlockPos pos) {
+        BreedingTimerState timerState = BreedingTimerState.getServerState(world);
+        String key = getPosKey(pos);
+        timerState.removeTimer(key);
+    }
+
+    private static class BreedingResult {
+        Block offspring;
+        List<Block> parents;
+
+        BreedingResult(Block offspring, Block... parents) {
+            this.offspring = offspring;
+            this.parents = Arrays.asList(parents);
+        }
+    }
+
+    private static BreedingResult findBreedingPartner(World world, BlockPos pos, Block centerFlower) {
         BlockPos[] adjacentPositions = {
             pos.north(), pos.south(), pos.east(), pos.west(),
             pos.north().east(), pos.north().west(),
             pos.south().east(), pos.south().west()
         };
 
+        List<Block> adjacentFlowers = new ArrayList<>();
         for (BlockPos adjPos : adjacentPositions) {
             Block adjacentFlower = world.getBlockState(adjPos).getBlock();
-
-            if (!isHybridizableFlower(adjacentFlower)) {
-                continue;
+            if (isHybridizableFlower(adjacentFlower)) {
+                adjacentFlowers.add(adjacentFlower);
             }
+        }
 
+        List<BreedingResult> validResults = new ArrayList<>();
+        int lightLevel = world.getLightLevel(pos);
+
+        Block sameFlowerHybrid = SAME_FLOWER_RECIPES.get(centerFlower);
+        if (sameFlowerHybrid != null) {
+            long matchCount = adjacentFlowers.stream().filter(f -> f == centerFlower).count();
+            if (matchCount >= 1) {
+                validResults.add(new BreedingResult(sameFlowerHybrid, centerFlower, centerFlower));
+            }
+        }
+
+        for (Map.Entry<Set<Block>, Block> entry : TRIPLE_HYBRID_RECIPES.entrySet()) {
+            Set<Block> requiredParents = entry.getKey();
+            if (requiredParents.contains(centerFlower)) {
+                Set<Block> otherRequired = new HashSet<>(requiredParents);
+                otherRequired.remove(centerFlower);
+
+                boolean hasAllOthers = true;
+                for (Block required : otherRequired) {
+                    if (!adjacentFlowers.contains(required)) {
+                        hasAllOthers = false;
+                        break;
+                    }
+                }
+
+                if (hasAllOthers) {
+                    Block[] parentsArray = requiredParents.toArray(new Block[0]);
+                    validResults.add(new BreedingResult(entry.getValue(), parentsArray));
+                }
+            }
+        }
+
+        for (Block adjacentFlower : adjacentFlowers) {
             Set<Block> combination = new HashSet<>();
             combination.add(centerFlower);
             combination.add(adjacentFlower);
 
-            int lightLevel = world.getLightLevel(pos);
-
             Block halloweenHybrid = HALLOWEEN_RECIPES.get(combination);
-            if (halloweenHybrid != null) {
-                if (lightLevel <= 4) {
-                    if (world.getRandom().nextFloat() < 0.5f) {
-                        return halloweenHybrid;
-                    }
-                }
+            if (halloweenHybrid != null && lightLevel <= 4) {
+                validResults.add(new BreedingResult(halloweenHybrid, centerFlower, adjacentFlower));
                 continue;
             }
 
             Block hybrid = HYBRID_RECIPES.get(combination);
             if (hybrid != null) {
-                if (world.getRandom().nextFloat() < 0.5f) {
-                    return hybrid;
-                }
+                validResults.add(new BreedingResult(hybrid, centerFlower, adjacentFlower));
             }
         }
 
-        return null;
+        if (validResults.isEmpty()) {
+            return null;
+        }
+
+        BreedingResult chosenResult = validResults.get(world.getRandom().nextInt(validResults.size()));
+
+        if (world.getRandom().nextBoolean()) {
+            return chosenResult;
+        } else {
+            Block parentCopy = chosenResult.parents.get(world.getRandom().nextInt(chosenResult.parents.size()));
+            return new BreedingResult(parentCopy, chosenResult.parents.toArray(new Block[0]));
+        }
+    }
+
+    public static boolean isHybridizableFlower(Block block) {
+        return ModBlocks.getAllFlowers().contains(block);
     }
 
     private static BlockPos findEmptyAdjacentSpace(World world, BlockPos centerPos) {
@@ -174,12 +259,12 @@ public class ModHybridBreeding {
 
         List<BlockPos> validPositions = new ArrayList<>();
 
-        for (BlockPos pos : positions) {
-            BlockState state = world.getBlockState(pos);
-            BlockState below = world.getBlockState(pos.down());
+        for (BlockPos checkPos : positions) {
+            BlockState state = world.getBlockState(checkPos);
+            BlockState below = world.getBlockState(checkPos.down());
 
             if (state.isAir() && isValidGround(below)) {
-                validPositions.add(pos);
+                validPositions.add(checkPos);
             }
         }
 
@@ -201,13 +286,16 @@ public class ModHybridBreeding {
                block == Blocks.MOSS_BLOCK;
     }
 
-    private static void grantHybridAdvancement(ServerPlayerEntity player, ServerWorld serverWorld) {
-        try {
-            grantAdvancement(player, serverWorld, "hybrid_flora");
-            grantAdvancement(player, serverWorld, "gardeners_path");
-        } catch (Exception e) {
-            SereneShrubbery.LOGGER.debug("Could not grant hybrid advancement: " + e.getMessage());
-        }
+    private static void grantAdvancementToNearbyPlayers(ServerWorld world, BlockPos pos) {
+        world.getPlayers(player -> player.squaredDistanceTo(pos.getX(), pos.getY(), pos.getZ()) < 256)
+            .forEach(player -> {
+                try {
+                    grantAdvancement(player, world, "hybrid_flora");
+                    grantAdvancement(player, world, "gardeners_path");
+                } catch (Exception e) {
+                    SereneShrubbery.LOGGER.debug("Could not grant hybrid advancement: " + e.getMessage());
+                }
+            });
     }
 
     private static void grantAdvancement(ServerPlayerEntity player, ServerWorld serverWorld, String advancementName) {

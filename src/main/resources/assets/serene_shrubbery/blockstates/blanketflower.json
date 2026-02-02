@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north,flower_amount=1": { "model": "serene_shrubbery:block/blanketflower_1" },
+    "facing=north,flower_amount=2": { "model": "serene_shrubbery:block/blanketflower_2" },
+    "facing=north,flower_amount=3": { "model": "serene_shrubbery:block/blanketflower_3" },
+    "facing=north,flower_amount=4": { "model": "serene_shrubbery:block/blanketflower_4" },
+    "facing=south,flower_amount=1": { "model": "serene_shrubbery:block/blanketflower_1", "y": 180 },
+    "facing=south,flower_amount=2": { "model": "serene_shrubbery:block/blanketflower_2", "y": 180 },
+    "facing=south,flower_amount=3": { "model": "serene_shrubbery:block/blanketflower_3", "y": 180 },
+    "facing=south,flower_amount=4": { "model": "serene_shrubbery:block/blanketflower_4", "y": 180 },
+    "facing=east,flower_amount=1": { "model": "serene_shrubbery:block/blanketflower_1", "y": 90 },
+    "facing=east,flower_amount=2": { "model": "serene_shrubbery:block/blanketflower_2", "y": 90 },
+    "facing=east,flower_amount=3": { "model": "serene_shrubbery:block/blanketflower_3", "y": 90 },
+    "facing=east,flower_amount=4": { "model": "serene_shrubbery:block/blanketflower_4", "y": 90 },
+    "facing=west,flower_amount=1": { "model": "serene_shrubbery:block/blanketflower_1", "y": 270 },
+    "facing=west,flower_amount=2": { "model": "serene_shrubbery:block/blanketflower_2", "y": 270 },
+    "facing=west,flower_amount=3": { "model": "serene_shrubbery:block/blanketflower_3", "y": 270 },
+    "facing=west,flower_amount=4": { "model": "serene_shrubbery:block/blanketflower_4", "y": 270 }
+  }
+}

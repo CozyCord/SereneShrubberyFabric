@@ -39,11 +39,13 @@ Serene Shrubbery adds **59 decorative blocks** to Minecraft, including:
 - **6 Lupine varieties** - Beautiful spire-shaped wildflowers
 - **3 Liverwort varieties** - Delicate woodland flowers
 - **2 Crown Cacti** - Desert-dwelling flowering cacti
-- **4 Blanketflower stages** - Flowers that have different amount of blanketflowers. 1-4
+- **Blanketflowers** - Unique flowers with 1-4 blooms that grow with bone meal and rotate based on placement
 - **3 Other flowers** - Fireweed, Butterfly Bush, and Twinflower
 - **Bloom Basket** - Decorative container for your pansies
 
 All flowers can be composted and used for crafting dyes!
+
+**Bee Compatibility:** All Serene Shrubbery flowers are fully compatible with bees - bees will pollinate them just like vanilla flowers!
 
 ---
 
@@ -62,8 +64,8 @@ Small, colorful flowers that can be placed in Bloom Baskets.
 | Orange Pansies | Breed Red + Yellow Pansies |
 | Pink Pansies | Breed Red + White Pansies |
 | Blue Frost Pansies | Breed White + Purple Pansies |
-| Sunrise Pansies | Breed Orange + Yellow Pansies |
-| Panola Pink Pansies | Breed Pink + Purple Pansies |
+| Panola Pink Pansies | Breed Pink + White Pansies |
+| Sunrise Pansies | Breed Orange + Yellow + Pink Pansies *(triple combo)* |
 | Halloween Pansies | Breed Purple + Orange Pansies (in light level 4 or below) |
 
 ### Hydrangeas
@@ -102,9 +104,9 @@ Beautiful wildflowers with tall flower spires.
 | Pink Lupine | Found naturally |
 | White Lupine | Found naturally |
 | Purple Lupine | Found naturally |
-| Golden Lupine | Breed White + Pink Lupine |
+| Golden Lupine | Breed White + White Lupine *(same flower)* |
 | Sky Blue Lupine | Breed White + Purple Lupine |
-| Manhattan Lights Lupine | Breed Pink + Purple Lupine |
+| Manhattan Lights Lupine | Breed Golden + Purple + Pink Lupine *(triple combo)* |
 
 ### Liverworts
 
@@ -127,14 +129,18 @@ Flowering cacti found in desert biomes. *Warning: They deal damage when touched!
 
 ### Blanketflowers
 
-Unique flowers that grow additional blooms over time when bone meal is applied.
+Unique flowers that can grow additional blooms when bone meal is applied. Found naturally in Beaches and Savannas.
 
-| Stage | Appearance |
-|-------|------------|
-| Blanketflower | 1 flower |
-| Double Blanketflower | 2 flowers |
-| Triple Blanketflower | 3 flowers |
-| Quad Blanketflower | 4 flowers |
+- **Growth**: Use bone meal on a blanketflower to add more blooms (up to 4)
+- **Rotation**: Blanketflowers can be placed facing different directions based on player orientation
+- **Stages**: 1 flower → 2 flowers → 3 flowers → 4 flowers (max)
+
+| Stage | Flower Count |
+|-------|--------------|
+| Stage 1 | 1 flower |
+| Stage 2 | 2 flowers |
+| Stage 3 | 3 flowers |
+| Stage 4 | 4 flowers (max) |
 
 ### Other Flowers
 
@@ -184,53 +190,76 @@ Bloom Baskets are decorative containers designed to hold pansies. They're perfec
 
 ## Hybrid Breeding
 
-Create unique flower hybrids by breeding two different flowers together!
+Create unique flower hybrids by breeding flowers together! Breeding is now a passive, time-based process.
 
 ### How to Breed
 
-1. Place two compatible flowers next to each other (within 1 block)
-2. Use **Bone Meal** on either flower
-3. If successful, a new hybrid flower will spawn in an adjacent empty space
-4. Breeding has a **50% success rate** per attempt
+1. Place compatible flowers next to each other (within 1 block, including diagonals)
+2. **Wait** - breeding happens automatically over time
+3. After **1-10 minutes**, a new flower will spawn in an adjacent empty space
+
+**Breeding Timing:**
+- **Minimum wait**: 1 minute before any breeding can occur
+- **Maximum wait**: 10 minutes (guaranteed breeding by this point)
+- Between 1-10 minutes, breeding chance increases gradually
+
+**Breeding Results (50/50 chance):**
+- **50% chance**: Produces the hybrid flower
+- **50% chance**: Produces a copy of one of the parent flowers
 
 **Requirements:**
 - Flowers must be adjacent (including diagonals)
-- There must be an empty space nearby for the hybrid to spawn
+- There must be an empty space nearby for the offspring to spawn
 - The ground below must be valid (grass, dirt, podzol, farmland, moss, etc.)
+- Timers persist through world saves, server restarts, and player disconnects
+
+### Duplicating Hybrid Flowers
+
+Once you've bred a hybrid flower, you can **duplicate it using bone meal**!
+
+- Right-click a hybrid flower with bone meal
+- A copy of that flower will spawn in an adjacent empty space
+- Only hybrid flowers respond to bone meal (base flowers do not)
 
 ### Breeding Recipes
 
 #### Pansy Hybrids
 
-| Parent 1 | Parent 2 | Result |
-|----------|----------|--------|
-| Red Pansies | Yellow Pansies | Orange Pansies |
-| Red Pansies | White Pansies | Pink Pansies |
-| White Pansies | Purple Pansies | Blue Frost Pansies |
-| Orange Pansies | Yellow Pansies | Sunrise Pansies |
-| Pink Pansies | Purple Pansies | Panola Pink Pansies |
+| Parents | Result |
+|---------|--------|
+| Red Pansies + Yellow Pansies | Orange Pansies |
+| Red Pansies + White Pansies | Pink Pansies |
+| White Pansies + Purple Pansies | Blue Frost Pansies |
+| Pink Pansies + White Pansies | Panola Pink Pansies |
+| **Orange + Yellow + Pink Pansies** | **Sunrise Pansies** *(triple combo)* |
 
 #### Foxglove Hybrids
 
-| Parent 1 | Parent 2 | Result |
-|----------|----------|--------|
-| White Foxglove | Peach Foxglove | Sunset Foxglove |
-| White Foxglove | Purple Foxglove | Lavender Foxglove |
-| Peach Foxglove | Purple Foxglove | Candy Mountain Foxglove |
+| Parents | Result |
+|---------|--------|
+| White Foxglove + Peach Foxglove | Sunset Foxglove |
+| White Foxglove + Purple Foxglove | Lavender Foxglove |
+| Peach Foxglove + Purple Foxglove | Candy Mountain Foxglove |
 
 #### Lupine Hybrids
 
-| Parent 1 | Parent 2 | Result |
-|----------|----------|--------|
-| White Lupine | Pink Lupine | Golden Lupine |
-| White Lupine | Purple Lupine | Sky Blue Lupine |
-| Pink Lupine | Purple Lupine | Manhattan Lights Lupine |
+| Parents | Result |
+|---------|--------|
+| White Lupine + White Lupine | Golden Lupine *(same flower)* |
+| White Lupine + Purple Lupine | Sky Blue Lupine |
+| **Golden + Purple + Pink Lupine** | **Manhattan Lights Lupine** *(triple combo)* |
 
 #### Hydrangea Hybrids
 
-| Parent 1 | Parent 2 | Result |
-|----------|----------|--------|
-| Red Hydrangea | White Hydrangea | Pink Hydrangea |
+| Parents | Result |
+|---------|--------|
+| Red Hydrangea + White Hydrangea | Pink Hydrangea |
+
+#### Special Breeding Types
+
+**Triple Combos:** Some hybrids require three different parent flowers to be adjacent. Place all three types next to each other to breed these special varieties.
+
+**Same Flower Breeding:** Golden Lupine requires two White Lupines placed adjacent to each other.
 
 ### Halloween Hybrids
 
@@ -345,8 +374,13 @@ All flowers have a **65% chance** to add a layer when placed in a composter.
 
 - **Bloom Baskets only accept pansies** - Other flowers cannot be placed inside as of right now
 - **Use Shift+Right-click** to quickly pick up filled bloom baskets without breaking them
-- **Breed in the dark** to unlock Halloween variants
+- **Breeding is passive** - Just place compatible flowers next to each other and wait 1-10 minutes
+- **Duplicate hybrids with bone meal** - Once you have a hybrid, use bone meal to quickly grow more
+- **Triple combos need all three flowers adjacent** - For Sunrise Pansies and Manhattan Lights Lupine
+- **Same flower breeding** - Place two White Lupines next to each other for Golden Lupine
+- **Breed in the dark** to unlock Halloween variants (light level 4 or below)
 - **Bone meal Blanketflowers** to grow them through their 4 stages
+- **Bees love these flowers!** All flowers work with bees for pollination
 - **Watch for butterflies** around Butterfly Bushes - they produce beautiful particle effects!
 - **Crown Cacti hurt!** Be careful when harvesting them
 
