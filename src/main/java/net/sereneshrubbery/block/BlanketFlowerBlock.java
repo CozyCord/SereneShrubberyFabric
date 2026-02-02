@@ -39,7 +39,7 @@ public class BlanketFlowerBlock extends PlantBlock implements Fertilizable {
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     //?} else {
     /*public static final net.minecraft.state.property.EnumProperty<Direction> FACING = Properties.HORIZONTAL_FACING;
-    *///?}
+     *///?}
 
     //? if >=1.21 {
     public static final MapCodec<BlanketFlowerBlock> CODEC = createCodec(BlanketFlowerBlock::new);
@@ -50,17 +50,17 @@ public class BlanketFlowerBlock extends PlantBlock implements Fertilizable {
     //? if >=1.21 {
     public BlanketFlowerBlock(Settings settings) {
         super(settings
-            .sounds(BlockSoundGroup.GRASS)
-            .noCollision()
-            .breakInstantly()
-            //? if >=1.21.2 {
-            /*.dropsNothing()
-            *///?}
+                        .sounds(BlockSoundGroup.GRASS)
+                        .noCollision()
+                        .breakInstantly()
+                //? if >=1.21.2 {
+                /*.dropsNothing()
+                 *///?}
         );
         setDefaultState(getStateManager().getDefaultState().with(FLOWER_AMOUNT, 1).with(FACING, Direction.NORTH));
     }
     //?} else {
-    /*public BlanketflowerBlock() {
+    /*public BlanketFlowerBlock() {
         super(Settings.copy(Blocks.POPPY)
             .sounds(BlockSoundGroup.GRASS)
             .noCollision()
@@ -75,33 +75,33 @@ public class BlanketFlowerBlock extends PlantBlock implements Fertilizable {
     }
 
     @Override
-    //? if >=1.21.2 {
+            //? if >=1.21.2 {
     /*protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-    *///?} else {
+     *///?} else {
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-    //?}
+        //?}
         return SHAPE;
     }
 
     @Override
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
         return floor.isOf(Blocks.GRASS_BLOCK) ||
-               floor.isOf(Blocks.DIRT) ||
-               floor.isOf(Blocks.COARSE_DIRT) ||
-               floor.isOf(Blocks.PODZOL) ||
-               floor.isOf(Blocks.FARMLAND) ||
-               floor.isOf(Blocks.ROOTED_DIRT) ||
-               floor.isOf(Blocks.MUD) ||
-               floor.isOf(Blocks.MUDDY_MANGROVE_ROOTS) ||
-               floor.isOf(Blocks.MOSS_BLOCK);
+                floor.isOf(Blocks.DIRT) ||
+                floor.isOf(Blocks.COARSE_DIRT) ||
+                floor.isOf(Blocks.PODZOL) ||
+                floor.isOf(Blocks.FARMLAND) ||
+                floor.isOf(Blocks.ROOTED_DIRT) ||
+                floor.isOf(Blocks.MUD) ||
+                floor.isOf(Blocks.MUDDY_MANGROVE_ROOTS) ||
+                floor.isOf(Blocks.MOSS_BLOCK);
     }
 
     @Override
     public boolean canReplace(BlockState state, ItemPlacementContext context) {
         return !context.shouldCancelInteraction()
-               && context.getStack().isOf(this.asItem())
-               && state.get(FLOWER_AMOUNT) < MAX_FLOWER_AMOUNT
-               || super.canReplace(state, context);
+                && context.getStack().isOf(this.asItem())
+                && state.get(FLOWER_AMOUNT) < MAX_FLOWER_AMOUNT
+                || super.canReplace(state, context);
     }
 
     @Nullable
@@ -110,17 +110,17 @@ public class BlanketFlowerBlock extends PlantBlock implements Fertilizable {
         BlockState existingState = ctx.getWorld().getBlockState(ctx.getBlockPos());
         if (existingState.isOf(this)) {
             return existingState.with(FLOWER_AMOUNT,
-                Math.min(MAX_FLOWER_AMOUNT, existingState.get(FLOWER_AMOUNT) + 1));
+                    Math.min(MAX_FLOWER_AMOUNT, existingState.get(FLOWER_AMOUNT) + 1));
         }
         return getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
     }
 
     @Override
-    //? if >=1.20.2 {
+            //? if >=1.20.2 {
     public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
-    //?} else {
-    /*public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
-    *///?}
+        //?} else {
+        /*public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
+         *///?}
         return true;
     }
 
@@ -151,9 +151,9 @@ public class BlanketFlowerBlock extends PlantBlock implements Fertilizable {
         super.afterBreak(world, player, pos, state, blockEntity, tool);
         //? if <1.21.4 {
         if (!world.isClient && !player.isCreative()) {
-        //?} else {
-        /*if (!world.isClient() && !player.isCreative()) {
-        *///?}
+            //?} else {
+            /*if (!world.isClient() && !player.isCreative()) {
+             *///?}
             int amount = state.get(FLOWER_AMOUNT);
             dropStack(world, pos, new ItemStack(this.asItem(), amount));
         }

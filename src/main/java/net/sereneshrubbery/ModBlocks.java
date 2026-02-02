@@ -166,7 +166,7 @@ public class ModBlocks {
         //? if >=1.21.4 {
         /*Identifier id = SereneId.of(name);
         RegistryKey<Block> key = RegistryKey.of(RegistryKeys.BLOCK, id);
-        Block block = new BlanketflowerBlock(AbstractBlock.Settings.create().registryKey(key));
+        Block block = new BlanketFlowerBlock(AbstractBlock.Settings.create().registryKey(key));
         ALL_BLOCKS.add(block);
         return Registry.register(Registries.BLOCK, key, block);
         *///?} elif >=1.21 {
@@ -174,7 +174,7 @@ public class ModBlocks {
         ALL_BLOCKS.add(block);
         return Registry.register(Registries.BLOCK, SereneId.of(name), block);
         //?} else {
-        /*Block block = new BlanketflowerBlock();
+        /*Block block = new BlanketFlowerBlock();
         ALL_BLOCKS.add(block);
         return Registry.register(Registries.BLOCK, SereneId.of(name), block);
         *///?}
