@@ -1,6 +1,6 @@
 {
   "display": {
-    "background": "minecraft:textures/block/stone.png",
+    "background": "minecraft:block/stone",
     "icon": {
       "id": "serene_shrubbery:butterfly_bush"
     },
@@ -21,7 +21,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "serene_shrubbery:every_flower"
+            "items": "#serene_shrubbery:every_flower"
           }
         ]
       }

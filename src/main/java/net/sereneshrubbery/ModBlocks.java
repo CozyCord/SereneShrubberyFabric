@@ -3,6 +3,7 @@ package net.sereneshrubbery;
 //? if >=1.21.4 {
 /*import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.util.Identifier;
 *///?}
 //? if >=1.21 {
 import net.minecraft.block.AbstractBlock;
