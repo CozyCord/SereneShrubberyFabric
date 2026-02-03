@@ -16,7 +16,9 @@ import net.sereneshrubbery.block.BlanketFlowerBlock;
 import net.sereneshrubbery.block.BloomBasketBlock;
 import net.sereneshrubbery.block.ButterflyBushBlock;
 import net.sereneshrubbery.block.CrownCactusBlock;
+import net.sereneshrubbery.block.LiverWortBlock;
 import net.sereneshrubbery.block.ModFlowerBlock;
+import net.sereneshrubbery.block.TallModFlowerBlock;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,27 +59,27 @@ public class ModBlocks {
     public static final Block WHITE_HYDRANGEA = registerFlower("white_hydrangea");
     public static final Block HALLOWEEN_HYDRANGEA = registerFlower("halloween_hydrangea");
 
-    // Foxgloves
-    public static final Block WHITE_FOXGLOVE = registerFlower("white_foxglove");
-    public static final Block PURPLE_FOXGLOVE = registerFlower("purple_foxglove");
-    public static final Block PEACH_FOXGLOVE = registerFlower("peach_foxglove");
-    public static final Block SUNSET_FOXGLOVE = registerFlower("sunset_foxglove");
-    public static final Block HALLOWEEN_FOXGLOVE = registerFlower("halloween_foxglove");
-    public static final Block CANDY_MOUNTAIN_FOXGLOVE = registerFlower("candy_mountain_foxglove");
-    public static final Block LAVENDER_FOXGLOVE = registerFlower("lavender_foxglove");
+    // Foxgloves (tall flowers)
+    public static final Block WHITE_FOXGLOVE = registerTallFlower("white_foxglove");
+    public static final Block PURPLE_FOXGLOVE = registerTallFlower("purple_foxglove");
+    public static final Block PEACH_FOXGLOVE = registerTallFlower("peach_foxglove");
+    public static final Block SUNSET_FOXGLOVE = registerTallFlower("sunset_foxglove");
+    public static final Block HALLOWEEN_FOXGLOVE = registerTallFlower("halloween_foxglove");
+    public static final Block CANDY_MOUNTAIN_FOXGLOVE = registerTallFlower("candy_mountain_foxglove");
+    public static final Block LAVENDER_FOXGLOVE = registerTallFlower("lavender_foxglove");
 
-    // Lupines
-    public static final Block LUPINE_PINK = registerFlower("lupine_pink");
-    public static final Block LUPINE_WHITE = registerFlower("lupine_white");
-    public static final Block PURPLE_LUPINE = registerFlower("purple_lupine");
-    public static final Block GOLDEN_LUPINE = registerFlower("golden_lupine");
-    public static final Block SKY_BLUE_LUPINE = registerFlower("sky_blue_lupine");
-    public static final Block MANHATTAN_LIGHTS_LUPINE = registerFlower("manhattan_lights_lupine");
+    // Lupines (tall flowers)
+    public static final Block LUPINE_PINK = registerTallFlower("lupine_pink");
+    public static final Block LUPINE_WHITE = registerTallFlower("lupine_white");
+    public static final Block PURPLE_LUPINE = registerTallFlower("purple_lupine");
+    public static final Block GOLDEN_LUPINE = registerTallFlower("golden_lupine");
+    public static final Block SKY_BLUE_LUPINE = registerTallFlower("sky_blue_lupine");
+    public static final Block MANHATTAN_LIGHTS_LUPINE = registerTallFlower("manhattan_lights_lupine");
 
-    // Liverworts
-    public static final Block BLUE_LIVERWORT = registerFlower("blue_liverwort");
-    public static final Block PURPLE_LIVERWORT = registerFlower("purple_liverwort");
-    public static final Block WHITE_LIVERWORT = registerFlower("white_liverwort");
+    // Liverworts (carpet-like)
+    public static final Block BLUE_LIVERWORT = registerLiverWort("blue_liverwort");
+    public static final Block PURPLE_LIVERWORT = registerLiverWort("purple_liverwort");
+    public static final Block WHITE_LIVERWORT = registerLiverWort("white_liverwort");
 
     // Crown Cacti
     public static final Block ORANGE_CROWN_CACTUS = registerCactus("orange_crown_cactus");
@@ -87,7 +89,7 @@ public class ModBlocks {
     public static final Block BLANKETFLOWER = registerBlanketflower("blanketflower");
 
     // Others
-    public static final Block FIREWEED = registerFlower("fireweed");
+    public static final Block FIREWEED = registerTallFlower("fireweed");
     public static final Block BUTTERFLY_BUSH = registerButterflyBush("butterfly_bush");
     public static final Block TWINFLOWER = registerFlower("twinflower");
 
@@ -104,6 +106,42 @@ public class ModBlocks {
         return Registry.register(Registries.BLOCK, SereneId.of(name), block);
         //?} else {
         /*Block block = new ModFlowerBlock();
+        ALL_BLOCKS.add(block);
+        return Registry.register(Registries.BLOCK, SereneId.of(name), block);
+        *///?}
+    }
+
+    private static Block registerTallFlower(String name) {
+        //? if >=1.21.4 {
+        /*Identifier id = SereneId.of(name);
+        RegistryKey<Block> key = RegistryKey.of(RegistryKeys.BLOCK, id);
+        Block block = new TallModFlowerBlock(AbstractBlock.Settings.create().registryKey(key));
+        ALL_BLOCKS.add(block);
+        return Registry.register(Registries.BLOCK, key, block);
+        *///?} elif >=1.21 {
+        Block block = new TallModFlowerBlock(AbstractBlock.Settings.copy(Blocks.POPPY));
+        ALL_BLOCKS.add(block);
+        return Registry.register(Registries.BLOCK, SereneId.of(name), block);
+        //?} else {
+        /*Block block = new TallModFlowerBlock();
+        ALL_BLOCKS.add(block);
+        return Registry.register(Registries.BLOCK, SereneId.of(name), block);
+        *///?}
+    }
+
+    private static Block registerLiverWort(String name) {
+        //? if >=1.21.4 {
+        /*Identifier id = SereneId.of(name);
+        RegistryKey<Block> key = RegistryKey.of(RegistryKeys.BLOCK, id);
+        Block block = new LiverWortBlock(AbstractBlock.Settings.create().registryKey(key));
+        ALL_BLOCKS.add(block);
+        return Registry.register(Registries.BLOCK, key, block);
+        *///?} elif >=1.21 {
+        Block block = new LiverWortBlock(AbstractBlock.Settings.copy(Blocks.POPPY));
+        ALL_BLOCKS.add(block);
+        return Registry.register(Registries.BLOCK, SereneId.of(name), block);
+        //?} else {
+        /*Block block = new LiverWortBlock();
         ALL_BLOCKS.add(block);
         return Registry.register(Registries.BLOCK, SereneId.of(name), block);
         *///?}
@@ -259,6 +297,18 @@ public class ModBlocks {
 
     public static boolean isHybridFlower(Block block) {
         return getHybridFlowers().contains(block);
+    }
+
+    /**
+     * Returns true for flowers that cannot be bonemealed.
+     * Wild pansies (red, yellow, white, purple) and twinflower are not fertilizable.
+     */
+    public static boolean isNonFertilizableFlower(Block block) {
+        return block == RED_PANSIES ||
+               block == YELLOW_PANSIES ||
+               block == WHITE_PANSIES ||
+               block == PURPLE_PANSIES ||
+               block == TWINFLOWER;
     }
 
     public static void register() {

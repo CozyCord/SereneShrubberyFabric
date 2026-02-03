@@ -24,18 +24,17 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
-import net.sereneshrubbery.ModBlocks;
 import net.sereneshrubbery.event.ModHybridBreeding;
 import org.jetbrains.annotations.Nullable;
 
-public class ModFlowerBlock extends PlantBlock implements Fertilizable {
+public class TallModFlowerBlock extends PlantBlock implements Fertilizable {
     //? if >=1.21 {
-    public static final MapCodec<ModFlowerBlock> CODEC = createCodec(ModFlowerBlock::new);
+    public static final MapCodec<TallModFlowerBlock> CODEC = createCodec(TallModFlowerBlock::new);
     //?}
-    protected static final VoxelShape SHAPE = Block.createCuboidShape(2.0, 0.0, 2.0, 14.0, 14.0, 14.0);
+    protected static final VoxelShape SHAPE = Block.createCuboidShape(2.0, 0.0, 2.0, 14.0, 32.0, 14.0);
 
     //? if >=1.21 {
-    public ModFlowerBlock(Settings settings) {
+    public TallModFlowerBlock(Settings settings) {
         super(settings
             .sounds(BlockSoundGroup.GRASS)
             .noCollision()
@@ -47,7 +46,7 @@ public class ModFlowerBlock extends PlantBlock implements Fertilizable {
         );
     }
     //?} else {
-    /*public ModFlowerBlock() {
+    /*public TallModFlowerBlock() {
         super(Settings.copy(Blocks.POPPY)
             .sounds(BlockSoundGroup.GRASS)
             .noCollision()
@@ -112,12 +111,12 @@ public class ModFlowerBlock extends PlantBlock implements Fertilizable {
     //?} else {
     /*public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
     *///?}
-        return !ModBlocks.isNonFertilizableFlower(state.getBlock());
+        return true;
     }
 
     @Override
     public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
-        return !ModBlocks.isNonFertilizableFlower(state.getBlock());
+        return true;
     }
 
     @Override

@@ -39,21 +39,30 @@ public class ButterflyBushParticle extends SpriteBillboardParticle {
         this.startY = y;
         this.startZ = z;
 
-        // Set particle properties
-        this.maxAge = 80 + this.random.nextInt(40); // 4-6 seconds
+        this.maxAge = 80 + this.random.nextInt(40);
         this.scale = 0.15f + this.random.nextFloat() * 0.1f;
         this.gravityStrength = 0.0f;
 
-        // Set velocity with some randomness
         this.velocityX = velocityX + (this.random.nextDouble() - 0.5) * 0.02;
         this.velocityY = velocityY + this.random.nextDouble() * 0.02;
         this.velocityZ = velocityZ + (this.random.nextDouble() - 0.5) * 0.02;
 
-        // Set color (butterflies have varied colors)
-        float colorVariation = this.random.nextFloat() * 0.2f;
-        this.red = 0.9f + colorVariation;
-        this.green = 0.6f + colorVariation;
-        this.blue = 0.9f + colorVariation;
+        float[][] colors = {
+            {1.0f, 0.3f, 0.3f},   // Red
+            {1.0f, 0.6f, 0.2f},   // Orange
+            {1.0f, 1.0f, 0.3f},   // Yellow
+            {0.5f, 1.0f, 0.3f},   // Lime
+            {0.3f, 1.0f, 0.5f},   // Green
+            {0.3f, 1.0f, 1.0f},   // Cyan
+            {0.3f, 0.6f, 1.0f},   // Sky blue
+            {0.6f, 0.3f, 1.0f},   // Purple
+            {1.0f, 0.3f, 1.0f},   // Magenta
+            {1.0f, 0.5f, 0.7f},   // Pink
+        };
+        int colorIndex = this.random.nextInt(colors.length);
+        this.red = colors[colorIndex][0];
+        this.green = colors[colorIndex][1];
+        this.blue = colors[colorIndex][2];
 
         this.setSpriteForAge(spriteProvider);
     }
@@ -164,21 +173,30 @@ public class ButterflyBushParticle extends SpriteBillboardParticle {
         this.startY = y;
         this.startZ = z;
 
-        // Set particle properties
-        this.maxAge = 80 + random.nextInt(40); // 4-6 seconds
+        this.maxAge = 80 + random.nextInt(40);
         this.scale = 0.15f + random.nextFloat() * 0.1f;
         this.gravityStrength = 0.0f;
 
-        // Set velocity with some randomness
         this.velocityX = velocityX + (random.nextDouble() - 0.5) * 0.02;
         this.velocityY = velocityY + random.nextDouble() * 0.02;
         this.velocityZ = velocityZ + (random.nextDouble() - 0.5) * 0.02;
 
-        // Set color (butterflies have varied colors)
-        float colorVariation = random.nextFloat() * 0.2f;
-        this.red = 0.9f + colorVariation;
-        this.green = 0.6f + colorVariation;
-        this.blue = 0.9f + colorVariation;
+        float[][] colors = {
+            {1.0f, 0.3f, 0.3f},   // Red
+            {1.0f, 0.6f, 0.2f},   // Orange
+            {1.0f, 1.0f, 0.3f},   // Yellow
+            {0.5f, 1.0f, 0.3f},   // Lime
+            {0.3f, 1.0f, 0.5f},   // Green
+            {0.3f, 1.0f, 1.0f},   // Cyan
+            {0.3f, 0.6f, 1.0f},   // Sky blue
+            {0.6f, 0.3f, 1.0f},   // Purple
+            {1.0f, 0.3f, 1.0f},   // Magenta
+            {1.0f, 0.5f, 0.7f},   // Pink
+        };
+        int colorIndex = random.nextInt(colors.length);
+        this.red = colors[colorIndex][0];
+        this.green = colors[colorIndex][1];
+        this.blue = colors[colorIndex][2];
 
         this.age = 0;
     }

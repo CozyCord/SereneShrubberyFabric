@@ -26,8 +26,8 @@ public class ModHybridBreeding {
     private static final Map<Block, Block> SAME_FLOWER_RECIPES = new HashMap<>();
 
     // Timing constants (in milliseconds)
-    private static final long MIN_BREEDING_TIME_MS = 60_000;
-    private static final long MAX_BREEDING_TIME_MS = 600_000;
+    private static final long MIN_BREEDING_TIME = 60_000;
+    private static final long MAX_BREEDING_TIME = 600_000;
 
     public static void register() {
         initHybridRecipes();
@@ -123,11 +123,11 @@ public class ModHybridBreeding {
 
         long elapsedTime = currentTime - startTime;
 
-        if (elapsedTime < MIN_BREEDING_TIME_MS) {
+        if (elapsedTime < MIN_BREEDING_TIME) {
             return;
         }
 
-        float timeProgress = Math.min(1.0f, (float)(elapsedTime - MIN_BREEDING_TIME_MS) / (MAX_BREEDING_TIME_MS - MIN_BREEDING_TIME_MS));
+        float timeProgress = Math.min(1.0f, (float)(elapsedTime - MIN_BREEDING_TIME) / (MAX_BREEDING_TIME - MIN_BREEDING_TIME));
         float breedingChance = timeProgress;
 
         if (world.getRandom().nextFloat() > breedingChance) {

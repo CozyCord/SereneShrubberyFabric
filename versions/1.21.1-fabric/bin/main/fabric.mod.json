@@ -22,6 +22,9 @@
 			"${group}.SereneShrubberyClient"
 		]
 	},
+	"mixins": [
+		"serene_shrubbery.mixins.json"
+	],
 	"depends": {
 		"fabricloader": "*",
 		"minecraft": ">=${minecraftVersion}",

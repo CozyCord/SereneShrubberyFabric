@@ -1,6 +1,6 @@
 {
   "display": {
-    "background": "minecraft:block/stone",
+    "background": "minecraft:block/birch_planks",
     "icon": {
       "id": "serene_shrubbery:butterfly_bush"
     },

@@ -1,17 +1,21 @@
 package net.sereneshrubbery.block;
 
-//? if >=1.21 {
-import net.minecraft.block.AbstractBlock;
-//?}
+import java.util.HashMap;
+import java.util.Map;
+
+import org.jetbrains.annotations.Nullable;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
+//? if <1.21 {
+/*import net.minecraft.block.Blocks;
+*///?}
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -29,10 +33,6 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.sereneshrubbery.ModBlocks;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class BloomBasketBlock extends Block {
     //? if <1.21.4 {
@@ -150,11 +150,9 @@ public class BloomBasketBlock extends Block {
             *///?}
                 if (player.isSneaking()) {
                     world.removeBlock(pos, false);
-                    if (!player.isCreative()) {
-                        ItemStack basketStack = new ItemStack(currentBlock.asItem());
-                        if (!player.giveItemStack(basketStack)) {
-                            player.dropItem(basketStack, false);
-                        }
+                    ItemStack basketStack = new ItemStack(currentBlock.asItem());
+                    if (!player.giveItemStack(basketStack)) {
+                        player.dropItem(basketStack, false);
                     }
                 } else {
                     Direction facing = state.get(FACING);
@@ -182,14 +180,11 @@ public class BloomBasketBlock extends Block {
         //?} else {
         /*if (!world.isClient() && !player.isCreative()) {
         *///?}
-            // Check if this is a filled basket
             Item pansyItem = BASKET_TO_PANSY.get(state.getBlock());
             if (pansyItem != null) {
-                // Filled basket: drop empty basket + flower
                 dropStack(world, pos, new ItemStack(ModBlocks.BLOOM_BASKET.asItem()));
                 dropStack(world, pos, new ItemStack(pansyItem));
             } else {
-                // Empty basket: drop just the basket
                 dropStack(world, pos, new ItemStack(this.asItem()));
             }
         }

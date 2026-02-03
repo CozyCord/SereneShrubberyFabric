@@ -93,7 +93,9 @@ public class BlanketFlowerBlock extends PlantBlock implements Fertilizable {
                 floor.isOf(Blocks.ROOTED_DIRT) ||
                 floor.isOf(Blocks.MUD) ||
                 floor.isOf(Blocks.MUDDY_MANGROVE_ROOTS) ||
-                floor.isOf(Blocks.MOSS_BLOCK);
+                floor.isOf(Blocks.MOSS_BLOCK) ||
+                floor.isOf(Blocks.SAND) ||
+                floor.isOf(Blocks.RED_SAND);
     }
 
     @Override

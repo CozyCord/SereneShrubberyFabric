@@ -9,24 +9,25 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.Fertilizable;
 import net.minecraft.block.PlantBlock;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 import net.sereneshrubbery.particle.ModParticleTypes;
 
-/**
- * Butterfly Bush block that spawns butterfly particles randomly.
- */
-public class ButterflyBushBlock extends PlantBlock {
+public class ButterflyBushBlock extends PlantBlock implements Fertilizable {
     //? if >=1.21 {
     public static final MapCodec<ButterflyBushBlock> CODEC = createCodec(ButterflyBushBlock::new);
     //?}
@@ -65,7 +66,6 @@ public class ButterflyBushBlock extends PlantBlock {
     //? if <1.21.2 {
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        // Spawn butterfly particles randomly
         if (random.nextInt(5) == 0) {
             double x = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.8;
             double y = pos.getY() + 0.5 + random.nextDouble() * 0.5;
@@ -81,7 +81,6 @@ public class ButterflyBushBlock extends PlantBlock {
     //?} elif >=1.21.2 && <1.21.4 {
     /*@Override
     protected void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        // Spawn butterfly particles randomly
         if (random.nextInt(5) == 0) {
             double x = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.8;
             double y = pos.getY() + 0.5 + random.nextDouble() * 0.5;
@@ -97,7 +96,6 @@ public class ButterflyBushBlock extends PlantBlock {
     *///?} elif >=1.21.4 && <1.21.9 {
     /*@Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        // Spawn butterfly particles randomly
         if (random.nextInt(5) == 0) {
             double x = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.8;
             double y = pos.getY() + 0.5 + random.nextDouble() * 0.5;
@@ -113,7 +111,6 @@ public class ButterflyBushBlock extends PlantBlock {
     *///?} else {
     /*@Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        // Spawn butterfly particles randomly
         if (random.nextInt(5) == 0) {
             double x = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.8;
             double y = pos.getY() + 0.5 + random.nextDouble() * 0.5;
@@ -145,5 +142,28 @@ public class ButterflyBushBlock extends PlantBlock {
         *///?}
             dropStack(world, pos, new ItemStack(this.asItem()));
         }
+    }
+
+    @Override
+    //? if >=1.20.2 {
+    public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
+    //?} else {
+    /*public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
+    *///?}
+        return true;
+    }
+
+    @Override
+    public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
+        return true;
+    }
+
+    @Override
+    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
+        dropStack(world, pos, new ItemStack(this.asItem()));
+
+        world.spawnParticles(ParticleTypes.HAPPY_VILLAGER,
+            pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+            10, 0.3, 0.3, 0.3, 0.0);
     }
 }

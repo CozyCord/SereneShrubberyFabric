@@ -1,8 +1,8 @@
 {
   "display": {
-    "background": "minecraft:textures/block/birch_planks.png",
+    "background": "minecraft:block/birch_planks",
     "icon": {
-      "item": "serene_shrubbery:butterfly_bush"
+      "id": "serene_shrubbery:butterfly_bush"
     },
     "title": {
       "translate": "advancements.gardeners_path.title"
@@ -21,7 +21,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "serene_shrubbery:every_flower"
+            "items": "#serene_shrubbery:every_flower"
           }
         ]
       }

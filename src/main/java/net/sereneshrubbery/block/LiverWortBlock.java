@@ -3,9 +3,6 @@ package net.sereneshrubbery.block;
 //? if >=1.21 {
 import com.mojang.serialization.MapCodec;
 //?}
-//? if >=1.21 {
-import net.minecraft.block.AbstractBlock;
-//?}
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -24,35 +21,31 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
-import net.sereneshrubbery.ModBlocks;
-import net.sereneshrubbery.event.ModHybridBreeding;
 import org.jetbrains.annotations.Nullable;
 
-public class ModFlowerBlock extends PlantBlock implements Fertilizable {
+public class LiverWortBlock extends PlantBlock implements Fertilizable {
     //? if >=1.21 {
-    public static final MapCodec<ModFlowerBlock> CODEC = createCodec(ModFlowerBlock::new);
+    public static final MapCodec<LiverWortBlock> CODEC = createCodec(LiverWortBlock::new);
     //?}
-    protected static final VoxelShape SHAPE = Block.createCuboidShape(2.0, 0.0, 2.0, 14.0, 14.0, 14.0);
+    protected static final VoxelShape SHAPE = Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
 
     //? if >=1.21 {
-    public ModFlowerBlock(Settings settings) {
+    public LiverWortBlock(Settings settings) {
         super(settings
             .sounds(BlockSoundGroup.GRASS)
             .noCollision()
             .breakInstantly()
-            .ticksRandomly()
             //? if >=1.21.2 {
             /*.dropsNothing()
             *///?}
         );
     }
     //?} else {
-    /*public ModFlowerBlock() {
+    /*public LiverWortBlock() {
         super(Settings.copy(Blocks.POPPY)
             .sounds(BlockSoundGroup.GRASS)
             .noCollision()
-            .breakInstantly()
-            .ticksRandomly());
+            .breakInstantly());
     }
     *///?}
 
@@ -76,15 +69,6 @@ public class ModFlowerBlock extends PlantBlock implements Fertilizable {
                floor.isOf(Blocks.MUD) ||
                floor.isOf(Blocks.MUDDY_MANGROVE_ROOTS) ||
                floor.isOf(Blocks.MOSS_BLOCK);
-    }
-
-    @Override
-    //? if >=1.21.2 {
-    /*protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-    *///?} else {
-    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-    //?}
-        ModHybridBreeding.tryBreedOnRandomTick(world, pos, state.getBlock());
     }
 
     //? if >=1.21 {
@@ -112,12 +96,12 @@ public class ModFlowerBlock extends PlantBlock implements Fertilizable {
     //?} else {
     /*public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
     *///?}
-        return !ModBlocks.isNonFertilizableFlower(state.getBlock());
+        return true;
     }
 
     @Override
     public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
-        return !ModBlocks.isNonFertilizableFlower(state.getBlock());
+        return true;
     }
 
     @Override
