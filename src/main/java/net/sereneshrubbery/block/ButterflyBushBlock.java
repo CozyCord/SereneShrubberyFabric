@@ -66,7 +66,7 @@ public class ButterflyBushBlock extends PlantBlock implements Fertilizable {
     //? if <1.21.2 {
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        if (random.nextInt(5) == 0) {
+        if (random.nextInt(8) == 0) {
             double x = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.8;
             double y = pos.getY() + 0.5 + random.nextDouble() * 0.5;
             double z = pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 0.8;
@@ -81,7 +81,7 @@ public class ButterflyBushBlock extends PlantBlock implements Fertilizable {
     //?} elif >=1.21.2 && <1.21.4 {
     /*@Override
     protected void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        if (random.nextInt(5) == 0) {
+        if (random.nextInt(8) == 0) {
             double x = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.8;
             double y = pos.getY() + 0.5 + random.nextDouble() * 0.5;
             double z = pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 0.8;
@@ -96,7 +96,7 @@ public class ButterflyBushBlock extends PlantBlock implements Fertilizable {
     *///?} elif >=1.21.4 && <1.21.9 {
     /*@Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        if (random.nextInt(5) == 0) {
+        if (random.nextInt(8) == 0) {
             double x = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.8;
             double y = pos.getY() + 0.5 + random.nextDouble() * 0.5;
             double z = pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 0.8;
@@ -111,7 +111,7 @@ public class ButterflyBushBlock extends PlantBlock implements Fertilizable {
     *///?} else {
     /*@Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        if (random.nextInt(5) == 0) {
+        if (random.nextInt(8) == 0) {
             double x = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.8;
             double y = pos.getY() + 0.5 + random.nextDouble() * 0.5;
             double z = pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 0.8;
